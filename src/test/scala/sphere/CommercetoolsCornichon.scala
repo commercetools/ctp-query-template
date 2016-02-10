@@ -13,13 +13,11 @@ trait CommercetoolsCornichon extends CornichonFeature with AuthSteps{
 
   override lazy val baseUrl = s"${wsConfig.api}/<project-key>"
 
-  beforeEachScenario {
-    Seq(
-      save("project-key" -> wsConfig.projectName),
-      create_token,
-      setup_auth_headers
-    )
-  }
+  beforeEachScenario (
+    save("project-key" -> wsConfig.projectName),
+    create_token,
+    setup_auth_headers
+  )
 
   override def registerExtractors = Map(
     "response-id" → JsonMapper(HttpService.LastResponseBodyKey, "id")

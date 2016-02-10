@@ -2,7 +2,7 @@ package sphere
 
 import java.nio.charset.StandardCharsets
 import java.util.Base64
-import com.github.agourlay.cornichon.core.RunnableStep._
+import com.github.agourlay.cornichon.core.EffectStep
 
 
 trait AuthSteps {
@@ -10,7 +10,7 @@ trait AuthSteps {
 
   val auth = httpServiceByURL(wsConfig.authApi)
 
-  def create_token = effectful(
+  def create_token = EffectStep(
     title = "Create token",
     show = false,
     effect = s ⇒ {
@@ -27,7 +27,7 @@ trait AuthSteps {
     }
   )
 
-  def setup_auth_headers = effectful(
+  def setup_auth_headers = EffectStep(
     title = "Setup auth headers",
     show = false,
     effect = s ⇒ {
