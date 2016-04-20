@@ -2,7 +2,8 @@ package sphere
 
 import java.nio.charset.StandardCharsets
 import java.util.Base64
-import com.github.agourlay.cornichon.core.EffectStep
+
+import com.github.agourlay.cornichon.steps.regular.EffectStep
 
 
 trait AuthSteps {

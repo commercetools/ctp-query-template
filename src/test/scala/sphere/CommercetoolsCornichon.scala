@@ -1,8 +1,6 @@
 package sphere
 
 import com.github.agourlay.cornichon.CornichonFeature
-import com.github.agourlay.cornichon.core.JsonMapper
-import com.github.agourlay.cornichon.http.HttpService
 import com.typesafe.config.ConfigFactory
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
@@ -19,7 +17,4 @@ trait CommercetoolsCornichon extends CornichonFeature with AuthSteps{
     setup_auth_headers
   )
 
-  override def registerExtractors = Map(
-    "response-id" → JsonMapper(HttpService.LastResponseBodyKey, "id")
-  )
 }
