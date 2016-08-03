@@ -18,8 +18,5 @@ scalacOptions ++= Seq(
 
 libraryDependencies ++= Seq(
   "net.ceedubs" %% "ficus" % "1.1.2",
-  "com.github.agourlay" %% "cornichon" % "0.8.2" % "test"
+  "com.github.agourlay" %% "cornichon" % "0.8.4" % "test"
 )
-
-// Comment for // execution
-//parallelExecution in Test := false
