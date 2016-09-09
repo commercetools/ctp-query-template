@@ -3,7 +3,7 @@ package sphere
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
-import com.github.agourlay.cornichon.http.RootExtractor
+import com.github.agourlay.cornichon.http.{HttpRequest, RootExtractor}
 import com.github.agourlay.cornichon.steps.regular.EffectStep
 
 
@@ -15,19 +15,19 @@ trait AuthSteps {
   def create_token = EffectStep(
     title = "Create token",
     show = false,
-    effect = { s ⇒
-      val clientSecret = wsConfig.client.secret
-      val clientId = wsConfig.client.id
-      auth.post(
-        url = "/oauth/token",
-        body = None,
-        params = Seq("grant_type" → "client_credentials", "scope" → s"manage_project:<project-key>"),
-        headers = Seq(("Authorization", "Basic " + Base64.getEncoder.encodeToString(s"$clientId:$clientSecret".getBytes(StandardCharsets.UTF_8)))),
-        extractor = RootExtractor("token"),
-        expectedStatus = Some(200)
-      )(s)
-    }
+    effect = auth.requestEffect(
+      request = HttpRequest.post("/oauth/token")
+        .withParams(
+          "grant_type" → "client_credentials",
+          "scope" → "manage_project:<project-key>")
+        .withHeaders("Authorization" -> authHeaderValue(wsConfig.client.id, wsConfig.client.secret)),
+      extractor = RootExtractor("token"),
+      expectedStatus = Some(200)
+    )
   )
+
+  def authHeaderValue(clientId: String, clientSecret: String) =
+    "Basic " + Base64.getEncoder.encodeToString(s"$clientId:$clientSecret".getBytes(StandardCharsets.UTF_8))
 
   def setup_auth_headers = EffectStep(
     title = "Setup auth headers",
