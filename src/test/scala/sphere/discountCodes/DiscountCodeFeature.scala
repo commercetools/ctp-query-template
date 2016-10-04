@@ -8,7 +8,8 @@ class DiscountCodeFeature extends CommercetoolsCornichon{
   def feature =
     Feature("DiscountCode feature") {
 
-      Scenario("create 100 distinct discount codes") {
+      // Ignored by default because it does not clean up the test data
+      Scenario("create 100 distinct discount codes", ignored = true) {
 
         When a post("/cart-discounts").withBody(
           """
@@ -51,8 +52,11 @@ class DiscountCodeFeature extends CommercetoolsCornichon{
           Then assert status.is(201)
 
         }
+
+        And I get("/<project-key>/discount-codes")
+
+        Then assert body.path("total").is(100)
       }
     }
-
 }
 
