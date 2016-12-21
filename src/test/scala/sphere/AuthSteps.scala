@@ -29,7 +29,7 @@ trait AuthSteps {
   def authHeaderValue(clientId: String, clientSecret: String) =
     "Basic " + Base64.getEncoder.encodeToString(s"$clientId:$clientSecret".getBytes(StandardCharsets.UTF_8))
 
-  def setup_auth_headers = EffectStep(
+  def setup_auth_headers = EffectStep.fromSync(
     title = "Setup auth headers",
     show = false,
     effect = s ⇒ {
