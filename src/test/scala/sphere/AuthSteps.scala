@@ -3,7 +3,7 @@ package sphere
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
-import com.github.agourlay.cornichon.http.{HttpRequest, RootExtractor}
+import com.github.agourlay.cornichon.http.{HttpRequest, HttpService, RootExtractor}
 import com.github.agourlay.cornichon.steps.regular.EffectStep
 
 
@@ -34,7 +34,7 @@ trait AuthSteps {
     show = false,
     effect = s ⇒ {
       val token = s.getJsonStringField("token", path = "access_token")
-      s.addValue("with-headers", s"Authorization|Bearer $token")
+      s.addValue("with-headers", HttpService.encodeSessionHeader("Authorization",s"Bearer $token"))
     }
   )
 }
