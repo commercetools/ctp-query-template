@@ -53,7 +53,7 @@ class DiscountCodeFeature extends CommercetoolsCornichon{
 
         }
 
-        And I get("/<project-key>/discount-codes")
+        And I get("/discount-codes")
 
         Then assert body.path("total").is(100)
       }
