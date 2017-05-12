@@ -3,7 +3,7 @@ organization := "de.commercetools"
 
 description := "CTP query platform template"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.2"
 
 scalacOptions ++= Seq(
   "-unchecked",
