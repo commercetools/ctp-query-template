@@ -18,5 +18,5 @@ scalacOptions ++= Seq(
 
 libraryDependencies ++= Seq(
   "com.iheart" %% "ficus" % "1.4.0",
-  "com.github.agourlay" %% "cornichon" % "0.12.1" % Test
+  "com.github.agourlay" %% "cornichon" % "0.12.2" % Test
 )

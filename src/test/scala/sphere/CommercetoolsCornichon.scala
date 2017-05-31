@@ -11,10 +11,11 @@ trait CommercetoolsCornichon extends CornichonFeature with AuthSteps{
 
   override lazy val baseUrl = s"${wsConfig.api}/<project-key>"
 
-  beforeEachScenario (
-    save("project-key" -> wsConfig.projectName),
-    create_token,
-    setup_auth_headers
-  )
-
+  beforeEachScenario {
+    Attach {
+      save("project-key" -> wsConfig.projectName)
+      create_token
+      setup_auth_headers
+    }
+  }
 }
