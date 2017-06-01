@@ -33,7 +33,7 @@ trait AuthSteps {
     title = "Setup auth headers",
     show = false,
     effect = s ⇒ {
-      val token = s.getJsonStringField("token", path = "access_token")
+      val token = s.getJsonStringFieldUnsafe("token", path = "access_token")
       s.addValue("with-headers", HttpService.encodeSessionHeader("Authorization",s"Bearer $token"))
     }
   )
