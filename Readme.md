@@ -14,7 +14,7 @@ Warning, the tests require the definition of the ```clientId``` and ```clientSec
 
 The project contains [sbt-extras](https://github.com/paulp/sbt-extras) so you do not need to install ```sbt```.
   
-In the root folder run ```sbt test``` or ```/.sbt test``` to use the sbt-extra script.
+In the root folder run ```sbt test``` or ```./sbt test``` to use the sbt-extra script.
   
 For more ```sbt``` commands see this [doc](https://github.com/agourlay/cornichon#scalatest-integration)  
  
