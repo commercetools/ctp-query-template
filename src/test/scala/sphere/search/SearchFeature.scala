@@ -8,7 +8,7 @@ class SearchFeature extends CommercetoolsCornichon {
   def feature =
     Feature("Search feature") {
 
-      Scenario("use suggestion endpoint", ignored = true) {
+      Scenario("use suggestion endpoint") {
 
         When I get("/product-projections/suggest").withParams(
           "searchKeywords.en" ->"someInput"

@@ -8,8 +8,7 @@ class DiscountCodeFeature extends CommercetoolsCornichon{
   def feature =
     Feature("DiscountCode feature") {
 
-      // Ignored by default because it does not clean up the test data
-      Scenario("create 100 distinct discount codes", ignored = true) {
+      Scenario("create 100 distinct discount codes").ignoredBecause("Ignored by default because it does not clean up the test data") {
 
         When a post("/cart-discounts").withBody(
           """
