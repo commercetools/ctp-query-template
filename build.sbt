@@ -3,7 +3,7 @@ organization := "de.commercetools"
 
 description := "CTP query platform template"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.12.4"
 
 scalacOptions ++= Seq(
   "-unchecked",
@@ -17,6 +17,6 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.iheart" %% "ficus" % "1.4.0",
-  "com.github.agourlay" %% "cornichon" % "0.12.6" % Test
+  "com.iheart" %% "ficus" % "1.4.3",
+  "com.github.agourlay" %% "cornichon" % "0.14.2" % Test
 )
