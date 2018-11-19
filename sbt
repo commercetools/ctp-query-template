@@ -6,8 +6,8 @@
 set -o pipefail
 
 # todo - make this dynamic
-declare -r sbt_release_version="0.13.9"
-declare -r sbt_unreleased_version="0.13.9"
+declare -r sbt_release_version="1.2.6"
+declare -r sbt_unreleased_version="1.2.6"
 declare -r buildProps="project/build.properties"
 
 declare sbt_jar sbt_dir sbt_create sbt_version
@@ -85,6 +85,7 @@ make_url () {
         0.7.*) echo "http://simple-build-tool.googlecode.com/files/sbt-launch-0.7.7.jar" ;;
       0.10.* ) echo "$sbt_launch_repo/org.scala-tools.sbt/sbt-launch/$version/sbt-launch.jar" ;;
     0.11.[12]) echo "$sbt_launch_repo/org.scala-tools.sbt/sbt-launch/$version/sbt-launch.jar" ;;
+          1.*) echo "http://repo.ci.cloud.commercetools.de/content/repositories/public/org/scala-sbt/sbt-launch/$version/sbt-launch.jar" ;;
             *) echo "$sbt_launch_repo/org.scala-sbt/sbt-launch/$version/sbt-launch.jar" ;;
   esac
 }
@@ -101,7 +102,7 @@ init_default_option_file () {
   echo "$default_file"
 }
 
-declare -r cms_opts="-XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC"
+declare -r cms_opts="-XX:+CMSClassUnloadingEnabled"
 declare -r jit_opts="-XX:ReservedCodeCacheSize=256m -XX:+TieredCompilation"
 declare -r default_jvm_opts_common="-Xms512m -Xmx1536m -Xss2m $jit_opts $cms_opts"
 declare -r noshare_opts="-Dsbt.global.base=project/.sbtboot -Dsbt.boot.directory=project/.boot -Dsbt.ivy.home=project/.ivy"
@@ -109,7 +110,7 @@ declare -r latest_28="2.8.2"
 declare -r latest_29="2.9.3"
 declare -r latest_210="2.10.5"
 declare -r latest_211="2.11.7"
-declare -r latest_212="2.12.0-M3"
+declare -r latest_212="2.12.4"
 
 declare -r script_path="$(get_script_path "$BASH_SOURCE")"
 declare -r script_name="${script_path##*/}"
