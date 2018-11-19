@@ -1,9 +1,10 @@
+
 name := "ctp-query-template"
 organization := "de.commercetools"
 
 description := "CTP query platform template"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.12.7"
 
 scalacOptions ++= Seq(
   "-unchecked",
@@ -17,6 +18,6 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.iheart" %% "ficus" % "1.4.3",
-  "com.github.agourlay" %% "cornichon" % "0.14.2" % Test
+  "com.iheart" %% "ficus" % "1.4.4",
+  "com.github.agourlay" %% "cornichon-test-framework" % "0.16.3" % Test,
 )
