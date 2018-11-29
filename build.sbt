@@ -17,7 +17,9 @@ scalacOptions ++= Seq(
   "-Ywarn-unused-import"
 )
 
+testFrameworks += new TestFramework("com.github.agourlay.cornichon.framework.CornichonFramework")
+
 libraryDependencies ++= Seq(
   "com.iheart" %% "ficus" % "1.4.4",
-  "com.github.agourlay" %% "cornichon-test-framework" % "0.16.3" % Test,
+  "com.github.agourlay" %% "cornichon-test-framework" % "0.16.3" % Test
 )
