@@ -4,7 +4,7 @@ organization := "de.commercetools"
 
 description := "CTP query platform template"
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.8"
 
 scalacOptions ++= Seq(
   "-unchecked",
@@ -20,6 +20,6 @@ scalacOptions ++= Seq(
 testFrameworks += new TestFramework("com.github.agourlay.cornichon.framework.CornichonFramework")
 
 libraryDependencies ++= Seq(
-  "com.iheart" %% "ficus" % "1.4.4",
-  "com.github.agourlay" %% "cornichon-test-framework" % "0.16.3" % Test
+  "com.iheart" %% "ficus" % "1.4.6",
+  "com.github.agourlay" %% "cornichon-test-framework" % "0.17.1" % Test
 )
