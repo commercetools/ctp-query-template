@@ -34,7 +34,7 @@ class DiscountCodeFeature extends CommercetoolsCornichon{
 
         Then assert status.is(201)
 
-        And I save_body_path("id" → "cart-discount-id")
+        And I save_body_path("id" -> "cart-discount-id")
 
         Repeat(100) {
 

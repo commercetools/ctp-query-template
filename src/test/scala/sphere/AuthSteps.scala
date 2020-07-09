@@ -10,7 +10,7 @@ import com.github.agourlay.cornichon.json.CornichonJson._
 
 
 trait AuthSteps {
-  this: CommercetoolsCornichon ⇒
+  this: CommercetoolsCornichon =>
 
   val auth: HttpService = httpServiceByURL(wsConfig.authApi)
 
@@ -20,8 +20,8 @@ trait AuthSteps {
     effect = auth.requestEffect(
       request = HttpRequest.post("/oauth/token")
         .withParams(
-          "grant_type" → "client_credentials",
-          "scope" → "manage_project:<project-key>")
+          "grant_type" -> "client_credentials",
+          "scope"-> "manage_project:<project-key>")
         .withHeaders("Authorization" -> authHeaderValue(wsConfig.client.id, wsConfig.client.secret)),
       extractor = RootExtractor("token"),
       expectedStatus = Some(200)
@@ -34,10 +34,10 @@ trait AuthSteps {
   def setup_auth_headers: Step = EffectStep.fromSyncE(
     title = "Setup auth headers",
     show = false,
-    effect =  s ⇒ {
+    effect = s => {
       for {
-        cleaned <- removeFromWithHeaders("Authorization")(s) //cleanup header before hand to avoid duplicate entry for 'Authorization'
-        token <- s.getJsonStringField("token", path = "access_token")
+        cleaned <- removeFromWithHeaders("Authorization")(s.session) //cleanup header before hand to avoid duplicate entry for 'Authorization'
+        token <- s.session.getJsonStringField("token", path = "access_token")
         withAuth <- addToWithHeaders("Authorization", s"Bearer $token")(cleaned)
       } yield withAuth
     }
