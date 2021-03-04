@@ -85,7 +85,7 @@ make_url () {
         0.7.*) echo "http://simple-build-tool.googlecode.com/files/sbt-launch-0.7.7.jar" ;;
       0.10.* ) echo "$sbt_launch_repo/org.scala-tools.sbt/sbt-launch/$version/sbt-launch.jar" ;;
     0.11.[12]) echo "$sbt_launch_repo/org.scala-tools.sbt/sbt-launch/$version/sbt-launch.jar" ;;
-          1.*) echo "http://repo.ci.cloud.commercetools.de/content/repositories/public/org/scala-sbt/sbt-launch/$version/sbt-launch.jar" ;;
+          1.*) echo "https://nexus.services.europe-west1.gcp.commercetools.com/repository/public/org/scala-sbt/sbt-launch/$version/sbt-launch.jar" ;;
             *) echo "$sbt_launch_repo/org.scala-sbt/sbt-launch/$version/sbt-launch.jar" ;;
   esac
 }
